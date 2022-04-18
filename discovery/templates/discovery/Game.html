@@ -1,0 +1,121 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% comment %} TODO pass in the round number {% endcomment %}
+{% comment %} Other variables to pass endowment=200, cost=10, {% endcomment %}
+Round {{round_number}} of {{number_of_rounds}}
+{% endblock %}
+{% block scripts %}
+<style>
+  {% include 'discovery/styles.css' %}
+</style>
+<script>
+    // TAKE these as inputs so that on refresh you end up back where you started
+    INDEX_REVEALED = {{index_revealed}}
+    COST_OF_OFFER = {{cost_of_offer}}
+    ENDOWMENT = {{endowment}}
+    INDEX_COUNT = 0
+    BEST_OFFER = 0
+    BEST_OFFER_INDEX = 0
+    COST_OF_OFFERS = 0
+    PAYOFF = 0
+
+    listN = {{numbers}}
+    // setup the table
+    window.onload = function() {
+        for (let step = 0; step < INDEX_REVEALED; step++) {
+            var x = document.getElementById("row_"+INDEX_COUNT);
+            currOffer = listN.shift();
+            x.textContent = currOffer;
+            if (currOffer > BEST_OFFER) {
+                var y = document.getElementById("row_"+BEST_OFFER_INDEX);
+                y.style.backgroundColor = ''
+                x.style.backgroundColor = 'yellow'
+                BEST_OFFER_INDEX = INDEX_COUNT
+            }
+            BEST_OFFER = Math.max(BEST_OFFER, currOffer)
+            var x = document.getElementById("best_offer");
+            x.textContent = BEST_OFFER
+            var x = document.getElementById("cost_of_offers");
+            x.textContent = COST_OF_OFFERS
+            var x = document.getElementById("payoff");
+            PAYOFF = BEST_OFFER - COST_OF_OFFERS + ENDOWMENT
+            x.value = PAYOFF
+            INDEX_COUNT++;
+        }
+    }
+    function showNext(y) {
+        var x = document.getElementById("row_"+INDEX_COUNT);
+        if (x.textContent.endsWith("points to see")) {
+            // pop from list
+            currOffer = listN.shift();
+            x.textContent = currOffer;
+            // check and set best offer
+            if (currOffer > BEST_OFFER) {
+                var y = document.getElementById("row_"+BEST_OFFER_INDEX);
+                y.style.backgroundColor = ''
+                x.style.backgroundColor = 'yellow'
+                BEST_OFFER_INDEX = INDEX_COUNT
+            }
+            BEST_OFFER = Math.max(BEST_OFFER, currOffer)
+            var x = document.getElementById("best_offer");
+            x.textContent = BEST_OFFER
+            // set cost of offers
+            COST_OF_OFFERS += COST_OF_OFFER
+            var x = document.getElementById("cost_of_offers");
+            x.textContent = COST_OF_OFFERS
+            // set payoffs
+            var x = document.getElementById("payoff");
+            PAYOFF = BEST_OFFER - COST_OF_OFFERS + ENDOWMENT
+            x.value = PAYOFF
+        } else {
+            x.textContent = "";
+        }
+        INDEX_COUNT++;
+        liveSend(INDEX_COUNT);
+    }
+</script>
+{% endblock %}
+{% block content %}
+<div class="flex-box-container">
+    <div class="left">
+        <h4>Offers</h4>
+        <table id="left_table">
+            {% for n in index_values %}
+                <tr>
+                    <td class="num_row">
+                        <div id=row_{{n}}>pay {{cost_of_offer}} points to see</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="right">
+        <table id="right_table">
+            <tr>
+                <td>Best offer so far</td>
+                <td><div class="right_num"  id="best_offer"></div></td>
+            </tr>
+            <tr>
+                <td>Cost of offers if accept the best offer     </td>
+                <td><div class="right_num" id="cost_of_offers"></div></td>
+            </tr>
+            <tr>
+                <td>Payoff if you accept the best offer</td>
+                {% comment %} TODO add html input here for payoff {% endcomment %}
+                <td class="right_num"><input  name="round_payoff" id="payoff" type="number" readonly/></td>
+            </tr>
+        </table>
+        <div class="right-bt">
+            <button type="button" onclick="showNext()">Reveal another offer</button>
+            <button>Accept the best offer</button>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% include Constants.instructions_template %}
+
+
+{% endblock %}
+

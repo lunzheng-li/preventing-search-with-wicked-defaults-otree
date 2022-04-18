@@ -1,0 +1,21 @@
+{% extends "show_up/css.html" %}
+{% load otree static %}
+
+{% block title %}
+Summary
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+<p>You will receive <b>{{ player.payoff_showup }} AUD</b> for showing up on time. </p>
+
+<p>We will invite you back for other sessions that will be scheduled soon. </p>
+
+<b>{% formfields %}</b>
+{% next_button %}
+
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Summary
+{% endblock %}
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+{% comment %} <h4>Summary</h4> {% endcomment %}
+Periods {{chosen_rounds}} have been randomly chosen for payment.<br>
+
+{% for round, amount in rounds_payoffs %}
+    Your token earnings for Period {{round}}: {{amount}}<br>
+{% endfor %}
+<strong>Your total token earnings are: {{total_payoff}}</strong>
+<br>
+This amount is converted at a rate of $1=10 tokens
+In addition, you receive $5 participation fee.
+<br>
+Please enter your PayID  <input name="pay_id"  id="id_pay_id" class="form-control">
+Please re-enter your PayID  <input name="confirm_pay_id" id="id_pay_id" class="form-control">
+
+Press Next in order to receive payment.
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Questionnaire 2
+{% endblock %}
+{% block scripts %}
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding-left: 2em;
+}
+
+li {
+  float: left;
+}
+
+li label {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+1. Suppose you choose to pay {{cost_of_offer}} points to reveal another offer. You then learn that the new offer turns out to be no better than the current best offer. Please rate the intensity of the regret you anticipate experiencing in this situation (tick one box below):
+{{ form.two_one }}
+
+{% formfield 'two_two' %}
+
+{% next_button %}
+
+{% endblock %}
