@@ -13,6 +13,9 @@ class ParticipationPage(Page):
 class Consent(Page):
     form_model = "player"
 
+    form_fields = ['participant_name',
+                   'participant_signature', 'participant_date']
+
     def is_displayed(self):
         return self.round_number == 1
 
@@ -31,8 +34,20 @@ class Comprehension(Page):
             numbers=[74, 25, 61, 40, 1, 1, 1, 1, 1, 1],
             index_values=list(range(self.player.num_cards)),
             round_number=self.round_number,
-            number_of_rounds=self.session.config.get('num_rounds'),
+            # number_of_rounds=self.session.config.get('num_rounds'),
             index_revealed=4,
+            # some vars need to be there for instructions
+            participation_fee=int(self.session.config["participation_fee"]),
+            num_rounds=self.session.config.get('num_rounds'),
+            num_cards=self.player.num_cards,
+            num_cards_minus_1=self.player.num_cards - 1,
+            num_rounds_to_pay=Constants.num_rounds_to_pay,
+            point_to_dollar_factor=self.session.config.get(
+                'point_to_dollar_factor'),
+            endowment=self.session.config.get('endowment'),
+            offers_bottom=Constants.offers_bottom,
+            offers_top=Constants.offers_top,
+            # cost_of_offer=self.player.cost_of_offer,
         )
 
     def error_message(self, values):
@@ -107,6 +122,7 @@ class Game(Page):
             round_number=self.round_number,
             number_of_rounds=self.session.config.get('num_rounds'),
             index_revealed=self.player.index_revealed,
+            default_rounds=json.loads(self.player.default_rounds)
         )
 
     def before_next_page(self):
@@ -126,8 +142,8 @@ class Game(Page):
                 self.player.participant.vars["chosen_rounds"]
             )
             payoff = sum(rounds_payoffs.values())
-            self.player.total_payoff = payoff + \
-                len(rounds_payoffs) * self.session.config.get("endowment")
+            self.player.total_payoff = payoff
+            # +  len(rounds_payoffs) * self.session.config.get("endowment")
             self.player.participant.vars["game_total_payoff"] = self.player.total_payoff
             self.player.payoff = self.player.total_payoff / \
                 self.session.config.get('point_to_dollar_factor')
@@ -193,7 +209,7 @@ page_sequence = [
     Instructions,
     Comprehension,
     Game,
-    # seems that the following two page does not matter, figure out why?
+    # # seems that the following two page does not matter, figure out why?
     # Summary,
     # PostResults,
 ]

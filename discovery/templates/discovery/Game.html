@@ -21,6 +21,11 @@ Round {{round_number}} of {{number_of_rounds}}
     COST_OF_OFFERS = 0
     PAYOFF = 0
 
+    // add the optDefault var
+    ROUND_NUM = {{round_number}}
+    DEFAULT_ROUNDS = {{default_rounds}}
+    var OPT_DEFAULT
+
     listN = {{numbers}}
     // setup the table
     window.onload = function() {
@@ -73,7 +78,17 @@ Round {{round_number}} of {{number_of_rounds}}
             x.textContent = "";
         }
         INDEX_COUNT++;
-        liveSend(INDEX_COUNT);
+        // console.log(INDEX_COUNT)
+        // console.log(DEFAULT_ROUNDS)
+        // console.log(DEFAULT_ROUNDS.slice(ROUND_NUM-1, ROUND_NUM))
+
+        if (DEFAULT_ROUNDS.slice(ROUND_NUM-1, ROUND_NUM)[0]==0){
+            OPT_DEFAULT=2
+        } else {
+            OPT_DEFAULT=0
+        }
+        console.log(OPT_DEFAULT)
+        liveSend([INDEX_COUNT, OPT_DEFAULT]);
     }
 </script>
 {% endblock %}
