@@ -11,7 +11,7 @@ SESSION_CONFIGS = [
 
         num_cards=10,  # used
         endowment=200,  # used
-        point_to_dollar_factor=50,  # used
+        point_to_dollar_factor=100,  # used
 
 
         app_sequence=[
@@ -36,7 +36,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.02, participation_fee=5.00, doc=""
+    real_world_currency_per_point=0.01, participation_fee=5.00, doc=""
 )
 
 # ISO-639 code
