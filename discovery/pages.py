@@ -33,6 +33,8 @@ class Comprehension(Page):
             cost_of_offer=self.player.cost_of_offer,
             numbers=[74, 25, 61, 40, 1, 1, 1, 1, 1, 1],
             index_values=list(range(self.player.num_cards)),
+            index_revealed_comp=list(range(1, 4)),
+            index_unrevealed_comp=list(range(4, 10)),
             round_number=self.round_number,
             # number_of_rounds=self.session.config.get('num_rounds'),
             index_revealed=4,

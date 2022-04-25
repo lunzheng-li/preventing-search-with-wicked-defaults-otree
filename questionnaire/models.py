@@ -60,12 +60,12 @@ class Player(BasePlayer):
     two_one = models.IntegerField(
         label="1.   Suppose you choose to pay XX points to reveal another offer. You then learn that the new offer turns out to be no better than the current best offer. Please rate the intensity of the regret you anticipate experiencing in this situation (with '1' being 'no regret'):",
         # TODO logic needs to be a bit different if we need to include text labels.
-        choices=[[x, x] for x in range(1, 10)],
+        choices=[[x, x] for x in range(0, 11)],
         widget=widgets.RadioSelect,
     )
     two_two = models.IntegerField(
-        label='2.   Suppose you choose to accept the current best offer. You then learn that the next offer on the list could have been better than the current best offer. Please rate the intensity of the regret you anticipate experiencing in this situation (with "1" being "no regret"):',
-        choices=[[x, x] for x in range(1, 10)],
+        label='2.   Suppose you choose to accept the current best offer. You then learn that the next offer on the list could have been better than the current best offer. Please rate the intensity of the regret you anticipate experiencing in this situation ("0" = no regret, "10" = most intense regret):',
+        choices=[[x, x] for x in range(0, 11)],
         widget=widgets.RadioSelect,
     )
     # two_three = models.IntegerField(

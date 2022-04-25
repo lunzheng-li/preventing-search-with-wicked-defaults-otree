@@ -13,13 +13,36 @@ input {
     border-bottom: 1pt solid black;
 }
 
+.left_table_comp {
+    float: left;
+    border: none;
+    margin-left: -40px;
+
+}
+
+.left_table_comp .status {
+  border: none;
+  width: 40px
+}
+
+.left_table_comp .status_comp {
+  border: none;
+}
+
+.left_table_comp .num_row_comp {
+    width: 10em;
+    border: 1pt solid black;
+}
+
+
 #right_table {
     /*border-style: solid;*/
     padding: 20.5px
 }
 
 .right_num {
-    padding-left: 3em
+    padding-left: 3em;
+
 }
 
 .num_row {

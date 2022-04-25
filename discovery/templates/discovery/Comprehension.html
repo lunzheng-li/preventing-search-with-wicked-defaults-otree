@@ -77,10 +77,25 @@ Comprehension
 <div class="flex-box-container">
     <div class="left">
         <h4>Offers</h4>
-        <table id="left_table">
-            {% for n in index_values %}
+        <table class="left_table_comp">
+            <tr>
+                <td class="status_comp"></td>
+                <td class="num_row_comp">
+                    <div id=row_0>pay {{cost_of_offer}} points to see</div>
+                </td>
+            </tr>
+            {% for n in index_revealed_comp %}
                 <tr>
-                    <td class="num_row">
+                    <td class="status_comp"> paid &nbsp; </td>
+                    <td class="num_row_comp">
+                        <div id=row_{{n}}>pay {{cost_of_offer}} points to see</div>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for n in index_unrevealed_comp %}
+                <tr>
+                    <td class="status_comp"></td>
+                    <td class="num_row_comp">
                         <div id=row_{{n}}>pay {{cost_of_offer}} points to see</div>
                     </td>
                 </tr>
@@ -95,12 +110,12 @@ Comprehension
                 <td style="color:red">{{ form.comp_best_offer.errors }}</td>
             </tr>
             <tr>
-                <td>Cost of offers if accept the best offer     </td>
+                <td>Cost of revealed offers so far</td>
                 <td class="right_num">{{ form.comp_cost_of_offers }}</td>
                 <td style="color:red">{{ form.comp_cost_of_offers.errors }}</td>
             </tr>
             <tr>
-                <td>Payoff if you accept the best offer</td>
+                <td>Payoff if you accept the best offer now</td>
                 {% comment %} TODO add html input here for payoff {% endcomment %}
                 <td class="right_num">{{ form.comp_payoff }}</td>
                 <td style="color:red">{{ form.comp_payoff.errors }}</td>
