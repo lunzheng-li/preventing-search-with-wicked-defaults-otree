@@ -159,6 +159,7 @@ class Player(BasePlayer):
 
     # final payoff
     payoff_risk = models.FloatField()
+    # payoff = models.FloatField()  # it seems that you don't need set the model here
 
     your_decision = models.StringField()
 
@@ -248,11 +249,12 @@ class Player(BasePlayer):
         print(paying_switch_point)
         # print(self.session.config["participation_fee"])
         self.payoff_risk = float("{:.1f}".format(self.payoff_risk))
+        self.payoff = self.payoff_risk
 
         if 'game_total_payoff' in self.participant.vars:
-            self.payoff_in_total = self.participant.vars['game_total_payoff']/\
-            self.session.config.get('point_to_dollar_factor') +\
-            self.payoff_risk + self.session.config["participation_fee"]
+            self.payoff_in_total = self.participant.vars['game_total_payoff'] /\
+                self.session.config.get('point_to_dollar_factor') +\
+                self.payoff_risk + self.session.config["participation_fee"]
 
             # self.payoff_in_total = c(self.participant.vars['game_total_payoff']/\
             # self.session.config.get('point_to_dollar_factor')) +\
