@@ -49,10 +49,10 @@ class Subsession(BaseSubsession):
             with open('discovery/draws005.json', encoding='utf-8') as f:
                 rows = json.load(f)  # 30*800
         else:
-            with open('discovery/draws03.json', encoding='utf-8') as f:
+            with open('discovery/draws03_seed1.json', encoding='utf-8') as f:
                 rows = json.load(f)  # 30*800
 
-        with open('discovery/defaults.json', encoding='utf-8') as f:
+        with open('discovery/default_sequence_seed1.json', encoding='utf-8') as f:
             defaults = json.load(f)
             # print(type(defaults))  # 1*80
 
