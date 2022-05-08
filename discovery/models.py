@@ -46,7 +46,7 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         if self.session.config.get("cost_of_offer") == 5:
-            with open('discovery/draws005.json', encoding='utf-8') as f:
+            with open('discovery/draws005_seed1.json', encoding='utf-8') as f:
                 rows = json.load(f)  # 30*800
         else:
             with open('discovery/draws03_seed1.json', encoding='utf-8') as f:

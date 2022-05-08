@@ -19,7 +19,7 @@ class One(Page):
     ]
     def error_message(self, values):
         if all(x is None for x in values.values()):
-            return "You have to answer atleast one question"
+            return "You have to answer at least one question"
 
 class Two(Page):
     form_model = "player"
