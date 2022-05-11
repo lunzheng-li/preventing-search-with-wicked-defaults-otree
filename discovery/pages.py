@@ -102,7 +102,7 @@ class Game(Page):
     live_method = "live_next_payoff"
 
     form_fields = ["round_payoff", "index_revealed_check",
-                   "round_best_offer", "round_cost_of_offers", "optDefault"]
+                   "round_best_offer", "round_cost_of_offers"]
 
     def vars_for_template(self):
         numbers = json.loads(self.player.numbers)
@@ -127,7 +127,6 @@ class Game(Page):
             index_revealed=self.player.index_revealed,
             default_rounds=json.loads(self.player.default_rounds),
             # index_revealed_check=self.player.index_revealed_check,
-            opt_default=self.player.optDefault,
         )
 
     def before_next_page(self):

@@ -108,8 +108,8 @@ class Player(BasePlayer):
 
     def live_next_payoff(self, data):
         # see what you have access to here
-        self.index_revealed = data
-        # self.optDefault = data[1]
+        self.index_revealed = data[0]
+        self.optDefault = data[1]
     # seems that the live method may depend on the Internet speed.
     index_revealed_check = models.IntegerField(initial=1)
 
