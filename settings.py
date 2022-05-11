@@ -3,7 +3,7 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name="two_treatments",
-        display_name="Search Cost - please set cost_of_offer in Configure session",
+        display_name="Search Cost - no info",
         num_demo_participants=1,  # default
         # discovery parameters
         num_rounds=10,  # used
@@ -16,6 +16,25 @@ SESSION_CONFIGS = [
 
         app_sequence=[
             "discovery",
+            "questionnaire",
+            "risk_quiz",
+        ],
+    ),
+    dict(
+        name="two_treatments_info",
+        display_name="Search Cost - with info",
+        num_demo_participants=1,  # default
+        # discovery parameters
+        num_rounds=10,  # used
+        cost_of_offer=5,  # used
+
+        num_cards=10,  # used
+        endowment=200,  # used
+        point_to_dollar_factor=100,  # used
+
+
+        app_sequence=[
+            "discovery_info",
             "questionnaire",
             "risk_quiz",
         ],

@@ -1,0 +1,140 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Consent Form
+{% endblock %}
+
+{% block scripts %}
+
+
+<style>
+    .button-right { float: right; }
+    .otree-title { display: none; }
+    table2, th, td {
+      border: 0px solid rgba(0.25, 0.25, 0.25, 0.5); margin: 0rem;
+    }
+    .grey-header { padding: 0.125rem; padding-left: 0.25rem; padding-right: 0.25rem; margin-left: -0.25rem; margin-right: -0.25rem; width: 100%; background-color: #d4d4d4
+    }
+    .otree-form-errors { display: none; }
+    
+</style>
+<script>
+function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+
+</script>
+{% endblock %}
+
+{% block content %}
+
+    <div style="height: 4.5rem; border-top: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; margin-top: 2rem; margin-bottom: 1rem; padding: 0.25rem;">
+        <div style="height: 100%; width: 50%; vertical-align: middle; float: left; text-align: center; margin-left: 0%;">
+            <h4><strong>CONSENT FORM</strong></h4>
+            <h6>Economics Experiment (HREC NO. ETH19-3594)</h6>
+        </div>
+        <div style="width: 25%; float: right; ">
+            <img src="{% static "wicked_defaults/logo-unsw.png" %}" width="100%"/>
+        </div>
+        <div style="width: 25%; float: right;">
+            <img src="{% static "wicked_defaults/UTS_Letterhead_PS-1.png" %}" width="100%"/>
+        </div>
+    </div>
+
+    <p>
+        I <input required name="participant_name"> <span style="color: red;"><i>[please type your name]</i></span> agree to participate in the research project (HREC NO. <strong>ETH19-3594</strong>)
+        being conducted by A/Professor Jingjing Zhang, UTS Business School, x3064, and Professor Andreas Ortmann, UNSW Business School, email: a.ortmann@unsw.edu.au.
+    </p>
+
+    <p>
+        I have read the Participant Information Sheet or someone has read it to me in a language that I understand.
+    </p>
+
+    <p>
+        I understand the purposes, procedures, and risks of the research as described in the Participant Information Sheet.
+    </p>
+
+    <p>
+        I have had an opportunity to ask questions and I am satisfied with the answers I have received.
+    </p>
+
+    <p>
+        I freely agree to participate in this research project as described and understand that I am free to withdraw at any time without affecting my relationship with the researchers or the University of Technology Sydney or UNSW.
+    </p>
+
+    <p>
+        I agree that the research data gathered from this project may be published in a form that does not identify me in any way.
+    </p>
+
+    <p>
+        I am aware that I can contact A/Prof. Jingjing Zhang, or Professor Ortmann, if I have any concerns about the research.
+    </p>
+
+    <p>
+        If you like to have a copy of this CONSENT FORM, please make a screenshot now.
+    </p>
+
+    <br>
+
+    <table class="table2">
+        <tr>
+            <td><input required name="participant_signature"></td>
+            <td><input required type="date" name="participant_date"></td>
+        </tr>
+        <tr>
+            <td>Name and Signature [participant]</td>
+            <td>Date</td>
+        </tr>
+        <tr >
+            <td><br></td> <td></td>
+        </tr>
+        <tr>
+            <td><input readonly value="Jingjing Zhang" style="background: gainsboro; border: 1px solid #b6b6b6; padding: 0.125rem;"> <img src="{% static "wicked_defaults/signature_01.png" %}" width="25%"/></td>
+            <td><input id="date_1" readonly onsubmit="return validateForm()" style="background: gainsboro; border: 1px solid #b6b6b6; padding: 0.125rem;"></td>
+        </tr>
+        <tr>
+            <td>Name and Signature [researcher or delegate]</td>
+            <td>Date</td>
+        </tr>
+        <tr >
+            <td><br></td> <td></td>
+        </tr>
+        <tr>
+            <td><input readonly value="Andreas Ortmann" style="background: gainsboro; border: 1px solid #b6b6b6; padding: 0.125rem;"> <img src="{% static "wicked_defaults/signature_02.png" %}" width="25%"/></td>
+            <td><input id="date_2" readonly style="background: gainsboro; border: 1px solid #b6b6b6; padding: 0.125rem;"></td>
+        </tr>
+        <script>
+            date = new Date();
+            year = date.getFullYear();
+            month = date.getMonth() + 1;
+            day = date.getDate();
+            document.getElementById("date_1").value = day + "/" + month + "/" + year;
+            document.getElementById("date_2").value = day + "/" + month + "/" + year;
+        </script>
+        <tr>
+            <td>Name and Signature [researcher or delegate]</td>
+            <td>Date</td>
+        </tr>
+    </table>
+
+    <br>
+
+    {% if form.errors|length > 0 %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Error: </strong> You must complete all fields.
+    </div>
+    {% endif %}
+
+    <div style="visibility: hidden; height: 0px;"> {{ form.errors }}  </div>
+
+    <button class="btn btn-primary button-right">Continue</button>
+
+
+{% endblock %}
+
+

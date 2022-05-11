@@ -1,0 +1,94 @@
+input {
+    border: none;
+    background: transparent;
+}
+
+#left_table {
+    float: left;
+    border-style: solid;
+
+}
+
+#left_table tr {
+    border-bottom: 1pt solid black;
+}
+
+.left_table_comp {
+    float: left;
+    border: none;
+    margin-left: -40px;
+
+}
+
+.left_table_comp .status {
+  border: none;
+  width: 40px
+}
+
+.left_table_comp .status_comp {
+  border: none;
+}
+
+.left_table_comp .num_row_comp {
+    width: 10em;
+    border: 1pt solid black;
+}
+
+
+#right_table {
+    /*border-style: solid;*/
+    padding: 20.5px
+}
+
+.right_num {
+    padding-left: 3em;
+
+}
+
+.num_row {
+    width: 10em;
+}
+
+.flex-box-container {
+    display: flex;
+    /*border: 1px solid black;*/
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+    margin: auto;
+    width: 90%;
+
+}
+
+.flex-box-container .left {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: flex-start;
+}
+
+.flex-box-container .right {
+    display: flex;
+    flex-direction: column;
+    /*padding: 10px;*/
+    margin: auto;
+    align-items: flex-start;
+}
+
+.flex-box-container .right-bt {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    /*margin: auto;*/
+    align-items: flex-start;
+}
+
+.right-bt button{
+    margin: 3px;
+}
+
+.footnote {
+    font-size: 15px;
+    font-style: italic;
+}

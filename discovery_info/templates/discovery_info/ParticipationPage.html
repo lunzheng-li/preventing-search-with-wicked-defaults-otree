@@ -1,0 +1,99 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Participant Information Sheet
+{% endblock %}
+
+{% block scripts %}
+<style>
+    .button-right { float: right; }
+    .otree-title { display: none; }
+    table2, th, td {
+      border: 0px solid rgba(0.25, 0.25, 0.25, 0.5);  padding: 0.3rem;
+    }
+    .grey-header { padding: 0.125rem; padding-left: 0.25rem; padding-right: 0.25rem; margin-left: -0.25rem; margin-right: -0.25rem; width: 100%; background-color: #d4d4d4
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div style="height: 4.5rem; border-top: 1px solid #d4d4d4; border-bottom: 1px solid #d4d4d4; margin-top: 2rem; margin-bottom: 1rem; padding: 0.25rem;">
+        <div style="height: 100%; width: 50%; vertical-align: middle; float: left; text-align: center; margin-left: 0%;">
+            <h4><strong>PARTICIPANT INFORMATION SHEET</strong></h4>
+            <h6>Economics Experiment (HREC NO. ETH19-3594)</h6>
+        </div>
+        <div style="width: 25%; float: right; ">
+            <img src="{% static "wicked_defaults/logo-unsw.png" %}" width="100%"/>
+        </div>
+        <div style="width: 25%; float: right;">
+            <img src="{% static "wicked_defaults/UTS_Letterhead_PS-1.png" %}" width="100%"/>
+        </div>
+    </div>
+
+    <p>
+        <div class="grey-header">WHO IS DOING THE RESEARCH?</div>
+        My name is Jingjing Zhang and I am an Associate Professor at UTS. This is a joint project with Professors Andreas Ortmann from UNSW, Tom Wilkening from U of Melbourne, and Dmitry Ruvkin from Florida State U.
+    </p>
+
+    <p>
+        <div class="grey-header">WHAT IS THIS RESEARCH ABOUT?</div>
+        This is research to help understand how people make economic decisions, using human subjects as participants. Australian Research Council DP DP190103475 funds this research.
+    </p>
+
+    <p>
+        <div class="grey-header">IF I SAY YES, WHAT WILL IT INVOLVE?</div>
+        If you decide to participate, you will work on a computer while making decisions in a number of given scenarios.
+    </p>
+
+    <p>
+        <div class="grey-header">ARE THERE ANY RISKS/INCONVENIENCE?</div>
+        Risks are minimal and are no greater than those encountered in everyday activities.
+    </p>
+
+    <p>
+        <div class="grey-header">DO I GET PAID FOR PARTICIPATION?</div>
+        Yes. You will be paid via PayID at the end of the experiment. The amount of money earned depends in part upon your decisions and decisions of other subjects in the experiment.
+    </p>
+
+    <p>
+        <div class="grey-header">WHAT WILL HAPPEN IF I SAY NO?</div>
+        If you decide not to participate, it will not affect your relationship with the researchers or the University of Technology Sydney.
+        If you wish to withdraw from the study once it has started, you can do so at any time without having to give a reason.
+        </p><p>
+        If you decide to leave the research project, we will not collect additional personal information from you, although personal information already collected will be retained to ensure
+        that the results of the research project can be measured properly and to comply with law.
+        You should be aware that data collected up to the time you withdraw will form part of the research project results.
+    </p>
+
+    <p>
+        <div class="grey-header">CONFIDENTIALITY</div>
+        By signing the consent form you consent to the research team collecting and using personal information about you for the research project.
+        All this information will be treated confidentially by not recording your name in combination with your data.
+        When the research is completed, the data that is kept does not include personal information, only choices are kept.
+        Your information will only be used for the purpose of this research project and it will only be disclosed with your permission, except as required by law.
+        </p><p>
+        We plan to discuss/publish the results. In any publication, information will be provided in such a way that you cannot be identified. We might share the anonymized data with other researchers for replication purposes, or meta-analysis purposes.
+    </p>
+
+    <p>
+        <div class="grey-header">WHAT IF I HAVE CONCERNS OR A COMPLAINT?</div>
+        If you have concerns about the research that you think I can help you with, please feel free to contact me on <a href="mailto:jingjing.zhang@uts.edu.au">jingjing.zhang@uts.edu.au</a>.
+    </p>
+
+    <p>
+        <strong>NOTE: </strong> <br>
+        This study has been approved by the University of Technology Sydney Human Research Ethics Committee [UTS HREC].
+        If you have any concerns or complaints about any aspect of the conduct of this research, please contact the Ethics Secretariat on ph.: <strong>+61 2 9514 2478</strong> or email: <a href="mailto:Research.Ethics@uts.edu.au">Research.Ethics@uts.edu.au</a>,
+        and quote the UTS HREC reference number. Any matter raised will be treated confidentially, investigated, and you will be informed of the outcome.
+    </p>
+
+    <p>
+        If you like to have a copy of this PARTICIPANT INFORMATION SHEET, please make a screenshot now.
+    </p>
+
+    <button class="btn btn-primary button-right">Next</button>
+
+{% endblock %}
