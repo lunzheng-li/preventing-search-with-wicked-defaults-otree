@@ -127,6 +127,7 @@ class Game(Page):
             index_revealed=self.player.index_revealed,
             default_rounds=json.loads(self.player.default_rounds),
             # index_revealed_check=self.player.index_revealed_check,
+            opt_default=self.player.optDefault,
         )
 
     def before_next_page(self):

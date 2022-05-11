@@ -24,7 +24,7 @@ Round {{round_number}} of {{number_of_rounds}}
     // add the optDefault var
     ROUND_NUM = {{round_number}}
     DEFAULT_ROUNDS = {{default_rounds}}
-    var OPT_DEFAULT
+    var OPT_DEFAULT = {{opt_default}}
 
     listN = {{numbers}}
     // setup the table
@@ -59,8 +59,11 @@ Round {{round_number}} of {{number_of_rounds}}
             console.log(INDEX_COUNT)
             console.log("on loading")
             console.log(PAYOFF)
+            console.log(BEST_OFFER)
             var x = document.getElementById("index_check");
-            x.value = INDEX_COUNT
+            x.value = INDEX_COUNT;
+            var x = document.getElementById("opt_default");
+            x.value = OPT_DEFAULT;
 
         }
     }
@@ -160,8 +163,8 @@ Round {{round_number}} of {{number_of_rounds}}
         </div>
     </div>
 </div>
-<p hidden><input name="index_revealed_check" id="index_check" type="number" readonly/></p>
-<p hidden><input name="optDefault" id="opt_default" type="number" readonly/></p>
+<p><input name="index_revealed_check" id="index_check" type="number" readonly/></p>
+<p><input name="optDefault" id="opt_default" type="number" readonly/></p>
 <br><br><br>
 {% include Constants.instructions_template %}
 
