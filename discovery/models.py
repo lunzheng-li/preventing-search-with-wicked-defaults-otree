@@ -95,25 +95,28 @@ class Player(BasePlayer):
     participant_name = models.StringField()
     participant_signature = models.StringField()
     participant_date = models.StringField()
-
     # game information
-    index_revealed = models.IntegerField(initial=1)
     num_cards = models.IntegerField()
     cost_of_offer = models.IntegerField()
+    default_rounds = models.StringField()
+    numbers = models.StringField()
+    optDefault = models.IntegerField()
+
+    index_revealed = models.IntegerField(initial=1)
 
     # add an optDefault var
-    default_rounds = models.StringField()
-    optDefault = models.IntegerField()
 
     def live_next_payoff(self, data):
         # see what you have access to here
-        self.index_revealed = data[0]
-        self.optDefault = data[1]
+        self.index_revealed = data
+        # self.optDefault = data[1]
+    # seems that the live method may depend on the Internet speed.
+    index_revealed_check = models.IntegerField(initial=1)
 
-    chosen_rounds = models.StringField()
-    # this needs to be refreshed per subsession (aka round)
-    numbers = models.StringField()
     round_payoff = models.IntegerField(initial=0)
+    round_best_offer = models.IntegerField()
+    round_cost_of_offers = models.IntegerField()
+
     comp_best_offer = models.IntegerField(
         label="What is the best offer so far?"
     )
@@ -123,6 +126,8 @@ class Player(BasePlayer):
     comp_payoff = models.IntegerField(
         label="What is your payoff if you accept the best offer?"
     )
+
+    chosen_rounds = models.StringField()
     total_payoff = models.IntegerField()
     pay_id = models.StringField()
     confirm_pay_id = models.StringField()
