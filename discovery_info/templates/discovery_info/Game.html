@@ -110,6 +110,11 @@ Round {{round_number}} of {{number_of_rounds}}
 </script>
 {% endblock %}
 {% block content %}
+{% if default_bol == 1 %}
+    The initial offer has been <b>selected</b> by a profit maximizing seller in this period. 
+{% else %}
+    The initial offer is <b>random</b> in this period.
+{% endif %}
 <div class="flex-box-container">
     <div class="left">
         <h4>Offers</h4>

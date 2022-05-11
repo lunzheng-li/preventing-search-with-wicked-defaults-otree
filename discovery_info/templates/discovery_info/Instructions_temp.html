@@ -15,6 +15,15 @@
         <p>One of the offer cards is always chosen as the initial offer. The {{num_cards_minus_1}} remaining cards are reshuffled and placed in a random order every round. The initial offer card is always shown on the top.</p>
         <p>If you like the initial offer, you can accept it immediately.</p>
         <p>If you do not like the initial offer, you can reveal further offers.</p>
+        
+        <p><strong><u>How the initial offer is determined</u></strong></p>
+        <p>
+            In 50% of rounds, selected randomly, the initial offer is random just like the remaining 9 (hidden) offers.
+        </p>
+        <p>
+            In the other 50% of rounds, the initial offer is carefully chosen from among the 10 random offers by a profit-maximizing seller.  The seller's profit is negatively related to the value of the offer that you eventually accept.   The seller has selected the lowest offer that it believes you will accept without searching.  
+        </p>
+        
         <p><strong><u>Cost of revealing other offers </u></strong></p>
         <p>Revealing additional offers incurs a fixed cost of {{cost_of_offer}} points per offer.</p>
         <p><strong>So your COST in a round equals (number of offers you reveal) x {{cost_of_offer}} points.</strong></p>

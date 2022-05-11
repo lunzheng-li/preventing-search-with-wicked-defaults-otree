@@ -107,6 +107,10 @@ class Game(Page):
         numbers = json.loads(self.player.numbers)
         curr_round_numbs = numbers[(
             self.round_number - 1) * 10:self.round_number * 10]
+
+        curr_round_default = json.loads(self.player.default_rounds)[self.round_number - 1
+                                                                    ]
+        # print(f"aaaaaaaaaaaaa{type(curr_round_default)}")
         return dict(
             participation_fee=int(self.session.config["participation_fee"]),
             num_rounds=self.session.config.get('num_rounds'),
@@ -124,7 +128,8 @@ class Game(Page):
             round_number=self.round_number,
             number_of_rounds=self.session.config.get('num_rounds'),
             index_revealed=self.player.index_revealed,
-            default_rounds=json.loads(self.player.default_rounds)
+            default_rounds=json.loads(self.player.default_rounds),
+            default_bol=curr_round_default
         )
 
     def before_next_page(self):
