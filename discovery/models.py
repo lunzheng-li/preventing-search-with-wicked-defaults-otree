@@ -110,6 +110,7 @@ class Player(BasePlayer):
         # see what you have access to here
         self.index_revealed = data[0]
         self.optDefault = data[1]
+        return {self.id_in_group: self.index_revealed}
     # seems that the live method may depend on the Internet speed.
     index_revealed_check = models.IntegerField(initial=1)
 

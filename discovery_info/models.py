@@ -101,6 +101,7 @@ class Player(BasePlayer):
         # see what you have access to here
         self.index_revealed = data[0]
         self.optDefault = data[1]
+        # return {0: 'thanks'}
 
     chosen_rounds = models.StringField()
     # this needs to be refreshed per subsession (aka round)
