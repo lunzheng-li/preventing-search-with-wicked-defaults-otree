@@ -125,10 +125,19 @@ Round {{round_number}} of {{number_of_rounds}}
         console.log('index count', INDEX_COUNT)
         // wait until the submit button becomes clickable and it submits a form
         if (data != INDEX_COUNT){
-            disable_btn = document.createElement('button');
-            disable_btn.type="button";
-            document.getElementById("acceptBtn").appendChild(disable_btn)
+            btn_div = document.getElementById('acceptBtn')
+            btn_div.innerHTML = '<button type="button">waiting for your decision send to server</button>'
+            // disable_btn = document.createElement('button');
+            // disable_btn.type="button";
+            // disable_btn.innerText="Accept the best offer"
+            // document.getElementById("acceptBtn").appendChild(disable_btn)
         } else {
+            // accept_btn = document.createElement('button');
+            // accept_btn.innerText="Accept the best offer"
+            // document.getElementById("acceptBtn").appendChild(accept_btn)
+           
+            btn_div = document.getElementById('acceptBtn')
+            btn_div.innerHTML = '<button>Accept the best offer</button>'
             console.log("they's are equal, the button is fine")
         }
     }
