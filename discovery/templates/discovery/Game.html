@@ -120,10 +120,17 @@ Round {{round_number}} of {{number_of_rounds}}
    //  }
 
     function liveRecv(data) {
-        console.log('received a message!', data);
+        console.log('index_revealed_server', data);
         // your code goes here
         console.log('index count', INDEX_COUNT)
         // wait until the submit button becomes clickable and it submits a form
+        if (data != INDEX_COUNT){
+            disable_btn = document.createElement('button');
+            disable_btn.type="button";
+            document.getElementById("acceptBtn").appendChild(disable_btn)
+        } else {
+            console.log("they's are equal, the button is fine")
+        }
     }
 
 </script>
@@ -163,7 +170,8 @@ Round {{round_number}} of {{number_of_rounds}}
         </table>
         <div class="right-bt">
             <button type="button" onclick="showNext()">Reveal another offer</button>
-            <button>Accept the best offer</button>
+            <div id="acceptBtn"><button>Accept the best offer</button></div>
+
         </div>
     </div>
 </div>
