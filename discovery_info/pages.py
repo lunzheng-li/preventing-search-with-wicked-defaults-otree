@@ -101,16 +101,15 @@ class Game(Page):
     form_model = "player"
     live_method = "live_next_payoff"
 
-    form_fields = ["round_payoff"]
+    form_fields = ["round_payoff", "index_revealed_check",
+                   "round_best_offer", "round_cost_of_offers"]
 
     def vars_for_template(self):
         numbers = json.loads(self.player.numbers)
         curr_round_numbs = numbers[(
             self.round_number - 1) * 10:self.round_number * 10]
-
-        curr_round_default = json.loads(self.player.default_rounds)[self.round_number - 1
-                                                                    ]
-        # print(f"aaaaaaaaaaaaa{type(curr_round_default)}")
+        curr_round_default = json.loads(self.player.default_rounds)[
+            self.round_number - 1]
         return dict(
             participation_fee=int(self.session.config["participation_fee"]),
             num_rounds=self.session.config.get('num_rounds'),
@@ -129,7 +128,8 @@ class Game(Page):
             number_of_rounds=self.session.config.get('num_rounds'),
             index_revealed=self.player.index_revealed,
             default_rounds=json.loads(self.player.default_rounds),
-            default_bol=curr_round_default
+            default_bol=curr_round_default,
+            # index_revealed_check=self.player.index_revealed_check,
         )
 
     def before_next_page(self):
