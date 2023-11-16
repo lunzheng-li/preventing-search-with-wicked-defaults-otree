@@ -1,4 +1,4 @@
-# zhang-wicked-default
+# Preventing Search with Wicked Defaults
 
 This repo contains the oTree source code for experiment in the following paper:
 
